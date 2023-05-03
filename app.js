@@ -25,15 +25,33 @@ const defaultArray = [{name:"Hi,Write and Press +"},{name:"To delete check and p
 
 app.get("/",function(req,res){
 
-    Item.find({}).then(result => {
-      if (result.length === 0){
-        Item.insertMany(defaultArray)
-        res.redirect("/")
+    // Item.find({}).then(result => {
+    //   if (result.length === 0){
+    //     Item.insertMany(defaultArray)
+    //     res.redirect("/")
+    //   }
+    //   else{
+    //         res.render("lists.ejs",{titleItem:"Today",nextItem:result})
+    //   }
+    // })
+    const customListName = _.upperCase("Today")
+
+    List.findOne({name:customListName}).then(result => {
+
+      if (result === null){
+          const list = new List({
+          name:customListName,
+          items:defaultArray
+         })
+         list.save()
+         res.redirect("/"+customListName)
+      }else{
+        List.find({}).then(Result =>{
+          res.render("lists.ejs",{titleItem:customListName,listTypes:Result,nextItem:result.items})
+        })
+         
       }
-      else{
-            res.render("lists.ejs",{titleItem:"Today",nextItem:result})
-      }
-    })
+   })
 
 })
 
@@ -50,7 +68,9 @@ app.get("/:name",function(req,res){
          list.save()
          res.redirect("/"+customListName)
       }else{
-         res.render("lists.ejs",{titleItem:customListName,nextItem:result.items})
+        List.find({}).then(Result =>{
+          res.render("lists.ejs",{titleItem:customListName,listTypes:Result,nextItem:result.items})
+       })
       }
    })
 
@@ -63,21 +83,14 @@ app.get("/about",function(req,res){
 app.post("/delete",function(req,res){
   var id = req.body.checkbox
   var ListName = req.body.ListName
-  console.log(id)
-  if (ListName === "Today"){
-    id = req.body.checkbox
-    Item.deleteOne({name:id}).then(err=>{console.log(err)})
-    res.redirect("/")
-  }else{
-        List.findOneAndUpdate({name:ListName},{$pull:{items:{name:id}}}).then(err=>{
-          console.log(err)
-          res.redirect("/"+ListName)
-        })
-  }
+  
+  List.findOneAndUpdate({name:ListName},{$pull:{items:{name:id}}}).then(err=>{
+    console.log(err)
+    res.redirect("/"+ListName)
+  })
+  
 
 })
-
-
 
 app.post("/",function(req,res){
     var newItem = req.body.insertMany
@@ -86,22 +99,31 @@ app.post("/",function(req,res){
       name : req.body.say
     })
 
-    if (newList === "Today"){
-      newItem.save()
-      res.redirect("/")
-
-    }else{
-      List.findOne({name:newList}).then(result => {
-        result.items.push(newItem)
-        result.save()
-        res.redirect("/"+ newList)
-      })
-    }
-
-
-    //
+    
+    List.findOne({name:newList}).then(result => {
+      result.items.push(newItem)
+      result.save()
+      res.redirect("/"+ newList)
     })
+    
+})
 
+app.post("/deleteList",function(req,res){
+  var ListName = req.body.ListName
+  
+  List.deleteOne({name:ListName}).then(err=>{
+    console.log(err)
+    res.redirect("/")
+  })
+  
+
+})
+
+app.post("/newList",function(req,res){
+  newListName = req.body.newList
+   res.redirect("/"+newListName)
+  
+})
 
 
 

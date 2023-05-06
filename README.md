@@ -3,7 +3,7 @@
 ToDo list is a simple web application to save Your daily tasks in order not to miss anything.
 
 ### Features
-* Pick a types of tasks you want to add by using route parameters
+* Create a types of tasks you want to add
 * Add new task
 * Mark task as completed / uncompleted
 * Delete completed task

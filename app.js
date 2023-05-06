@@ -56,6 +56,7 @@ app.get("/",function(req,res){
 })
 
 app.get("/:name",function(req,res){
+  // console.log(req.params.name)
     const customListName = _.upperCase(req.params.name)
 
     List.findOne({name:customListName}).then(result => {
@@ -109,8 +110,8 @@ app.post("/",function(req,res){
 })
 
 app.post("/deleteList",function(req,res){
-  var ListName = req.body.ListName
-  
+  var ListName = req.body.checkbox
+
   List.deleteOne({name:ListName}).then(err=>{
     console.log(err)
     res.redirect("/")

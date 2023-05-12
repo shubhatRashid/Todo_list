@@ -1,5 +1,5 @@
 <%- include('header'); -%>
-<h1 class="title">TASK MANAGER</h1>
+<h1 class="title"><i class="fa-sharp fa-solid fa-list-check fa-fade fa-lg"></i>    TASK MANAGER</h1>
 
 <div class="row ">
   <div class="col">
@@ -16,7 +16,7 @@
               <input name="checkbox" type="checkbox" value="<%=item.name %>" ></input>
               <input type="hidden" name="ListName" value="<%=titleItem %>" "></input>
               <a href="<%= item.name %>" > <%= item.name %> </a>
-              <button class="deleteButton" type="submit" name="delete">Delete</button>
+              <button class="deleteButton" type="submit" name="delete" style="background-color: transparent;"><i class="fa-solid fa-trash fa-beat-fade fa-2xl"></i></button>
             </div>
           </form>
         <% } %>
@@ -44,8 +44,8 @@
         <div class="item">
           <input name="checkbox" type="checkbox" value="<%=item.name %>" ></input>
           <input type="hidden" name="ListName" value="<%=titleItem %>" "></input>
-          <a> <%= item.name %> </a>
-          <button class="deleteButton" type="submit" name="delete">Delete</button>
+          <p> <%= item.name %> </p>
+          <button class="deleteButton" type="submit" name="delete" style="background-color: transparent;"><i class="fa-solid fa-trash fa-beat-fade fa-2xl"></i></button>
         </div>
       </form>
 

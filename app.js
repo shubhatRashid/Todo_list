@@ -3,12 +3,11 @@ const bodyParser = require("body-parser")
 const app = express()
 const mongoose = require("mongoose")
 const _ = require("lodash")
-
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static("public"));
 
-mongoose.connect('mongodb://127.0.0.1:27017/todoListDB');
+mongoose.connect('mongodb+srv://shubhatRashid:Ilovecoding@cluster0.vus6dpg.mongodb.net/todoListDB');
 
 const itemSchema = mongoose.Schema({
   name:String

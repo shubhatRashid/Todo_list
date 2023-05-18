@@ -1,10 +1,13 @@
 {
+  "homepage": "http://shubhat33.github.io/Todo_list",
   "name": "mytodolist_v1",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +19,8 @@
     "mongodb": "^5.5.0",
     "mongoose": "^7.0.1",
     "nodemon": "^2.0.20"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }

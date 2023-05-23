@@ -23,16 +23,6 @@ const List = mongoose.model("List",listSchema)
 const defaultArray = [{name:"Hi,Write and Press +"},{name:"To delete check and press delete"}]
 
 app.get("/",function(req,res){
-
-    // Item.find({}).then(result => {
-    //   if (result.length === 0){
-    //     Item.insertMany(defaultArray)
-    //     res.redirect("/")
-    //   }
-    //   else{
-    //         res.render("lists.ejs",{titleItem:"Today",nextItem:result})
-    //   }
-    // })
     const customListName = _.upperCase("Today")
 
     List.findOne({name:customListName}).then(result => {
@@ -46,7 +36,7 @@ app.get("/",function(req,res){
          res.redirect("/"+customListName)
       }else{
         List.find({}).then(Result =>{
-          res.render("lists.ejs",{titleItem:customListName,listTypes:Result,nextItem:result.items})
+          res.render("login.ejs",{titleItem:customListName,listTypes:Result,nextItem:result.items})
         })
          
       }

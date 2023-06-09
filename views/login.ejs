@@ -10,18 +10,21 @@
                 <h1 class="fw-bolder">Welcome,</h1>
                 <p class="fw-bold">To keep Track of your day to day tasks,
                      Please Login:</p>
+                     <p class="fw-bold"> Or</p>
+                <a href="/signup" class="btn btn-primary">SignUp</a>
             </div>
         </div>
         <div class="col">
             <div class="box my-5 py-5 px-5 h-75 ">
-            <form >
+            <h1 class="fw-bolder">Login,</h1>
+            <form action="/login" method="POST">
                 <div class="mb-4">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="text">
+                    <input type="text" name="email">
                 </div>
                 <div class="mb-4">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="text">
+                    <input type="text" name="password">
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>

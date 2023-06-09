@@ -9,23 +9,29 @@
                 </div >
                 <h1 class="fw-bolder">Welcome,</h1>
                 <p class="fw-bold">To keep Track of your day to day tasks,
-                     Please SignUp and Login :</p>
+                     Please SignUp:</p>
+                     <p class="fw-bold"> Or</p>
+                <a href="/login" class="btn btn-primary">Login</a>
             </div>
         </div>
         <div class="col">
             <div class="box my-5 py-4 px-5 h-75 ">
-            <form>
+            <form  method="POST" action="/signUp">
+                <div class="mb-4">
+                    <h1 class="fw-bolder">Sign Up,</h1>
+                </div>
+                
                 <div class="mb-3">
                     <label for="exampleInputUserName" class="form-label">User Name</label>
-                    <input type="text" >
+                    <input type="text" name="userName" >
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="text">
+                    <input type="text" name="email">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="text">
+                    <input type="text" name="Password">
                 </div>
                 <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>

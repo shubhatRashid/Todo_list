@@ -8,7 +8,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static("public"));
 
 mongoose.connect('mongodb+srv://shubhatRashid:Ilovecoding@cluster0.vus6dpg.mongodb.net/todoListDB');
-
+var isLoggedIn = false
+var userName = ''
 const itemSchema = mongoose.Schema({
   name:String
 })
@@ -18,11 +19,19 @@ const listSchema = mongoose.Schema({
   name : String,
   items : []
 })
+const userSchema = mongoose.Schema({
+  name : String,
+  email : String,
+  Password : String
+})
 const List = mongoose.model("List",listSchema)
+const User = mongoose.model("User",userSchema)
 
 const defaultArray = [{name:"Hi,Write and Press +"},{name:"To delete check and press delete"}]
 
 app.get("/",function(req,res){
+
+  if (isLoggedIn){
     const customListName = _.upperCase("Today")
 
     List.findOne({name:customListName}).then(result => {
@@ -36,13 +45,48 @@ app.get("/",function(req,res){
          res.redirect("/"+customListName)
       }else{
         List.find({}).then(Result =>{
-          res.render("login.ejs",{titleItem:customListName,listTypes:Result,nextItem:result.items})
+          res.render("lists.ejs",{titleItem:customListName,listTypes:Result,nextItem:result.items})
         })
          
       }
    })
-
+  }else{
+    res.render("SignUp.ejs")
+  }
 })
+
+app.get('/signup',(req,res) =>{
+  res.render("SignUp.ejs")
+})
+
+app.post('/signUp',(req,res) =>{
+  const user = new User({
+    name : req.body.userName,
+    email:req.body.email,
+    Password : req.body.Password
+  })
+  user.save()
+  res.render("login.ejs")
+})
+
+app.get('/login',(req,res) =>{
+  res.render("login.ejs")
+})
+
+app.post("/login",(req,res)=>{
+  User.findOne({email:req.body.email,Password:req.body.password}).then(
+    result => {
+      if (result === null){
+        res.render("login.ejs")
+      }else{
+        isLoggedIn = true
+        res.redirect("/")
+      }
+    }
+  )
+})
+
+
 
 app.get("/:name",function(req,res){
   // console.log(req.params.name)
@@ -95,7 +139,6 @@ app.post("/",function(req,res){
       result.save()
       res.redirect("/"+ newList)
     })
-    
 })
 
 app.post("/deleteList",function(req,res){

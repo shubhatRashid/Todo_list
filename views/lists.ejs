@@ -8,12 +8,12 @@
 
     <div class="box" id="box">
       <% listTypes.forEach(function(item){%>
-        <% if (item.name!="FAVICON ICO"){%>
+        <% if (item.listName!="FAVICON ICO"){%>
           <form action="/deleteList" method="POST">
             <div class="item">
-              <input name="checkbox" type="checkbox" value="<%=item.name %>" ></input>
+              <input name="checkbox" type="checkbox" value="<%=item.listName %>" ></input>
               <input type="hidden" name="ListName" value="<%=titleItem %>" "></input>
-              <a href="<%= item.name %>" > <%= item.name %> </a>
+              <a href="<%= item.listName %>" > <%= item.listName %> </a>
               <button class="deleteButton" type="submit" name="delete" style="background-color: transparent;"><i class="fa-solid fa-trash fa-beat-fade fa-2xl"></i></button>
             </div>
           </form>
@@ -23,7 +23,7 @@
       <form class="items" action="/newList" method="POST">
         <div class="item">
           <input name="newList" type="text" autofocus="autofocus" placeholder="New List" autocomplete="off" />
-          <button class="add" type="Submit" name="list" value="<%=titleItem%>">+</button>
+          <button class="add" type="Submit" >+</button>
         </div>
       </form>
     </div>
@@ -37,16 +37,18 @@
     </div>
 
     <div class="box" id="box">
-      <% nextItem.forEach(function(item){%>
-      <form action="/delete" method="POST">
-        <div class="item">
-          <input name="checkbox" type="checkbox" value="<%=item.name %>" ></input>
-          <input type="hidden" name="ListName" value="<%=titleItem %>" "></input>
-          <p> <%= item.name %> </p>
-          <button class="deleteButton" type="submit" name="delete" style="background-color: transparent;"><i class="fa-solid fa-trash fa-beat-fade fa-2xl"></i></button>
-        </div>
-      </form>
-
+      <% nextItem.forEach(function(object){%>
+        <% if (object.listName===titleItem){%>
+            <% object.items.forEach(function(item){%>
+                  <form action="/delete" method="POST">
+                    <div class="item">
+                      <input name="checkbox" type="checkbox" value="<%=item.name %>" ></input>
+                      <input type="hidden" name="ListName" value="<%=titleItem %>" "></input>
+                      <p> <%= item.name %> </p>
+                      <button class="deleteButton" type="submit" name="delete" style="background-color: transparent;"><i class="fa-solid fa-trash fa-beat-fade fa-2xl"></i></button>
+                    </div>
+                  </form>
+            <% })} %>
       <% }) %>
 
       <form class="items" action="/" method="POST">

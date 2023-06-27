@@ -1,6 +1,6 @@
 <%- include("header") -%>
-<div class="row py-2 px-5">
-        <div class=" col ">
+<div class="row mx-auto">
+        <div class=" col columns">
             <div class="box my-5 py-5 h-75 px-1 text-center">
                 <div class="mx-auto my-3 h-25 w-25  rounded-circle border border-3 border-dark">
                     <h1>
@@ -14,19 +14,23 @@
                 <a href="/signup" class="btn btn-primary">SignUp</a>
             </div>
         </div>
-        <div class="col">
-            <div class="box my-5 py-5 px-5 h-75 ">
-            <h1 class="fw-bolder">Login,</h1>
+        <div class="col d-flex mx-2 py-4">
+            <div class="box my-4 py-2 px-5 h-75 ">
+            <h2 class="fw-bolder py-5 ">Please Login First,</h2>
             <form action="/login" method="POST">
                 <div class="mb-4">
                     <label for="exampleInputEmail1" class="form-label">User Name</label>
-                    <input type="text" name="username">
+                    <input  type="text" name="username">
                 </div>
                 <div class="mb-4">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="text" name="password">
+                    <input type="password" name="password">
                 </div>
-                <button type="submit" class="btn btn-primary">Login</button>
+                 <button  class="btn btn-primary ">Login</button>
+                <div class = "hiddenButton">
+                  <p>or</p>
+                  <a href="/signup" class="btn btn-primary">SignUp</a>
+                </div>
             </form>
             </div>
         </div>

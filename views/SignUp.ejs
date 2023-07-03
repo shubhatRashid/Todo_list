@@ -1,0 +1,41 @@
+<%- include("header") -%>
+<div class="row mx-auto">
+        <div class=" col columns">
+            <div class="box my-5 py-2 h-75 px-1 text-center">
+                <div class="mx-auto my-3 h-25 w-25  rounded-circle border border-3 border-dark">
+                    <h1>
+                        <i class="fa-solid fa-user-plus fa-beat " style="color: #05c260;"></i>
+                    </h1>
+                </div >
+                <h1 class="fw-bolder">Welcome,</h1>
+                <p class="fw-bold">To keep Track of your day to day tasks,
+                     Please SignUp:</p>
+                     <p class="fw-bold"> Or</p>
+                <a href="/login" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+        <div class="col mx-2">
+            <div class="box my-5 py-2 px-5 h-75 ">
+            <form  method="POST" action="/signUp">
+                <div class="mb-4">
+                    <h1 class="fw-bolder">Sign Up,</h1>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="exampleInputUserName" class="form-label">User Name</label>
+                    <input type="text" name="userName" >
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="text" name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" name="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+            </div>
+        </div>
+</div>
+<%- include("footer") -%>

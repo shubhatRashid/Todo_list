@@ -5,12 +5,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --config=Scripts/config/webpack.dev.js --watch",
-    "build": "webpack --config=Scripts/config/webpack.prod.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "update:packages": "node wipe-dependencies.js && rm -rf node_modules && npm update --save-dev && npm update --save"
+    "build": "webpack --mode=production"
   },
   "author": "",
   "license": "ISC",

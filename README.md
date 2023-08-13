@@ -1,4 +1,4 @@
-# Task Manager
+# Todo_List
 ![Screenshot 2023-07-07 172103](https://github.com/shubhat33/Todo_list/assets/106548827/6d6c9438-0b29-4347-93bd-92d798121cc5)
 
 

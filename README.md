@@ -7,7 +7,7 @@
 
 * This is a simple ToDo List web application built using HTML, CSS, JavaScript, Node.js, Express, EJS templating, and MongoDB.
 * The app allows users to create, read, update, and delete tasks on their ToDo list.
-* live @ https://todolist-gr0h.onrender.com/*
+* live @ https://todolist-shubhat.cyclic.app/
 
 ## Prerequisites
 

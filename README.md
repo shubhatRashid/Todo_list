@@ -1,7 +1,10 @@
 
-# ToDo List App with HTML, CSS, JavaScript, Node.js, Express, EJS, and MongoDB
+# ToDo List App 
+ with HTML, CSS, JavaScript, Node.js, Express, EJS, and MongoDB
 ![Screenshot 2023-07-07 172103](https://github.com/shubhat33/Todo_list/assets/106548827/6d6c9438-0b29-4347-93bd-92d798121cc5)
-This is a simple ToDo List web application built using HTML, CSS, JavaScript, Node.js, Express, EJS templating, and MongoDB. The app allows users to create, read, update, and delete tasks on their ToDo list.
+* This is a simple ToDo List web application built using HTML, CSS, JavaScript, Node.js, Express, EJS templating, and MongoDB.
+* The app allows users to create, read, update, and delete tasks on their ToDo list.
+* live @ https://todolist-gr0h.onrender.com/*
 
 ## Prerequisites
 

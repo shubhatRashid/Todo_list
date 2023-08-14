@@ -6,6 +6,7 @@ const _ = require("lodash")
 const session = require('express-session')
 const passport = require('passport')
 const passportLocalMongoose = require('passport-local-mongoose')
+require('dotenv').config()
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -20,7 +21,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session())
 
-mongoose.connect('mongodb+srv://shubhatRashid:Ilovecoding@cluster0.vus6dpg.mongodb.net/todoListDB');
+mongoose.connect(`${process.env.MONGODB_URI}`);
 
 const listSchema = mongoose.Schema({
     listName : String,
